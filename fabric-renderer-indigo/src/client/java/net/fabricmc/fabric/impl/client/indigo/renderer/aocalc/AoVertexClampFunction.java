@@ -22,5 +22,5 @@ import net.fabricmc.fabric.impl.client.indigo.Indigo;
 interface AoVertexClampFunction {
 	float clamp(float x);
 
-	AoVertexClampFunction CLAMP_FUNC = Indigo.FIX_EXTERIOR_VERTEX_LIGHTING ? x -> x < 0f ? 0f : (x > 1f ? 1f : x) : x -> x;
+	AoVertexClampFunction CLAMP_FUNC =  x -> Indigo.FIX_EXTERIOR_VERTEX_LIGHTING ? Math.max(0f, Math.min(1f, x)) : x;
 }
